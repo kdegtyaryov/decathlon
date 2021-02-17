@@ -10,7 +10,7 @@ import java.util.function.BiFunction;
  * Represent combined athlete results.
  */
 public class AthleteResultsImpl implements AthleteResults {
-    private final String OUTPUT_FORMATTER = "|%20s|%7s|%11s|%10s|%11s|%7s|%15s|%14s|%12s|%15s|%8s|%12s|%8s|";
+    private final String OUTPUT_FORMATTER = "|%20s|%7s|%11s|%10s|%11s|%7s|%15s|%14s|%12s|%15s|%9s|%13s|%7s|";
 
     private List<EventResult> athleteResults;
     private String name;
