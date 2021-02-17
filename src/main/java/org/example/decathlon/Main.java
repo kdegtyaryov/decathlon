@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
+        // Run this class to process the file input.csv in resources folder.
         List<AthleteResults> results = new AthleteResultSetReaderImpl().readFromFile("src/main/resources/input.csv");
         System.out.println(new DecathlonResultProcessor().sortResults(results));
     }
