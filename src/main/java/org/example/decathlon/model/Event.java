@@ -3,7 +3,7 @@ package org.example.decathlon.model;
 import java.util.function.BiFunction;
 
 /**
- * Created by Konstanin Degtyaryov on 15.02.2021.
+ * Describes decathlon events. Every event contains metrics and method for the event score evaluation.
  */
 public enum Event {
     Distance100(25.4347, 18, 1.81, "100 m", MeasureUnit.METERS, scoreFunction.trackFunction),
@@ -17,12 +17,12 @@ public enum Event {
     JavelinThrow(10.14, 7, 1.08, "Javelin throw", MeasureUnit.METERS, scoreFunction.fieldFunction),
     Distance1500(0.03768, 480, 1.85, "1500 m", MeasureUnit.SECONDS, scoreFunction.trackFunction);
 
-    double a;
-    double b;
-    double c;
-    String name;
-    MeasureUnit unit;
-    BiFunction<Event,Double,Double> function;
+    private double a;
+    private double b;
+    private double c;
+    private String name;
+    private MeasureUnit unit;
+    private BiFunction<Event,Double,Double> function;
 
     Event(double a, double b, double c, String name, MeasureUnit unit, BiFunction<Event,Double,Double> scoreCalcFunction) {
         this.a = a;
@@ -34,9 +34,20 @@ public enum Event {
     }
 
     public String getName() {
-        return name;
+        return this.name;
+    }
+    public MeasureUnit getMeasureUnit() { return this.unit; }
+
+    /*
+    Calculates event score
+     */
+    public int evalScore(double result) {
+        return this.function.apply(this, result).intValue();
     }
 
+    /*
+    Contains expressions to evaluate a score for the field and the track event.
+     */
     static class scoreFunction {
         public static final BiFunction<Event,Double,Double> trackFunction = (e,p) -> Math.pow(e.b-p, e.c)*e.a;
         public static final BiFunction<Event,Double,Double> fieldFunction = (e,p) -> Math.pow(p-e.b, e.c)*e.a;

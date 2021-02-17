@@ -1,7 +1,7 @@
 package org.example.decathlon.model;
 
 /**
- * Created by Konstanin Degtyaryov on 16.02.2021.
+ * Represents units to measure decathlon events.
  */
 public enum MeasureUnit {
         METERS,

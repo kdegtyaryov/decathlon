@@ -1,43 +1,38 @@
 package org.example.decathlon.model;
 
 /**
- * Created by Konstanin Degtyaryov on 15.02.2021.
+ * Represents result for concrete event of an athlete.
  */
 public class EventResultImpl implements EventResult {
     private Event event;
-    private double value;
+    private String viewResult;
+    private double result;
+    private int eventScore;
 
-    public EventResultImpl(Event event, String value) {
-        switch (event.unit) {
-            case METERS:
-                this.value = Double.parseDouble(value);
-                break;
-            case CENTIMETERS:
-                this.value = Double.parseDouble(value)*100;
-                break;
-            case SECONDS:
-                String[] timeParts = value.split("\\.");
-                this.value = Double.parseDouble(timeParts[0])*60 + Double.parseDouble(timeParts[1]) + Double.parseDouble(timeParts[2])/100;
-                break;
-        }
+    public EventResultImpl(Event event, String viewResult, double result) {
         this.event = event;
+        this.result = result;
+        this.viewResult = viewResult;
+        this.eventScore = event.evalScore(this.result);
     }
 
-    public EventResultImpl(Event event, double value) {
-        this.event = event;
-        this.value = value;
+    @Override
+    public int getEventScore() {
+        return this.eventScore;
     }
 
-    public int getEventPoints() {
-        return event.function.apply(event, value).intValue();
+    @Override
+    public String getViewResult() {
+        return viewResult;
     }
 
+    @Override
     public Event getEvent() {
         return this.event;
     }
 
     @Override
     public String toString() {
-        return event.getName() + ":" + value;
+        return event.getName() + ":" + result;
     }
 }

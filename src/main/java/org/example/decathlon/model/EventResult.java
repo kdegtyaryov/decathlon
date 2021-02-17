@@ -1,9 +1,10 @@
 package org.example.decathlon.model;
 
 /**
- * Created by Konstanin Degtyaryov on 15.02.2021.
+ * Represents result for concrete event of an athlete.
  */
 public interface EventResult {
-    public int getEventPoints();
+    public int getEventScore();
+    public String getViewResult();
     public Event getEvent();
 }

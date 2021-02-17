@@ -1,8 +1,9 @@
 package org.example.decathlon;
 
 import org.example.decathlon.model.AthleteResults;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by Konstanin Degtyaryov on 17.02.2021.
@@ -14,7 +15,7 @@ public class ResultProcessor {
         sortedResults.sort(new Comparator<AthleteResults>() {
             @Override
             public int compare(AthleteResults o1, AthleteResults o2) {
-                return Integer.compare(o2.getTotalPoints(), o1.getTotalPoints());
+                return Integer.compare(o2.getTotalScore(), o1.getTotalScore());
             }
         });
 
@@ -32,7 +33,7 @@ public class ResultProcessor {
         }
 
         // Continue result group
-        if (Integer.compare(prevTotalScore, allResults.get(idx).getTotalPoints()) == 0) {
+        if (Integer.compare(prevTotalScore, allResults.get(idx).getTotalScore()) == 0) {
             placeResults.add(allResults.get(idx));
             String newPlace = prevPlace + "-" + (idx+1);
             setPlace(idx+1, prevTotalScore, newPlace, allResults, placeResults);
@@ -48,7 +49,7 @@ public class ResultProcessor {
             List<AthleteResults> newPlaceResults = new ArrayList<AthleteResults>();
             newPlaceResults.add(allResults.get(idx));
             String newPlace = Integer.toString(idx + 1);
-            int newResults = allResults.get(idx).getTotalPoints();
+            int newResults = allResults.get(idx).getTotalScore();
             setPlace(idx+1, newResults, newPlace, allResults, newPlaceResults);
         }
     }

@@ -2,7 +2,6 @@ package org.example.decathlon;
 
 import org.example.decathlon.model.AthleteResults;
 import org.example.decathlon.model.input.AthleteResultSetReaderImpl;
-
 import java.util.List;
 
 /**
