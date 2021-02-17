@@ -7,7 +7,7 @@ import java.util.function.BiFunction;
  * Represent combined athlete results.
  */
 public class AthleteResultsImpl implements AthleteResults {
-    private final String OUTPUT_FORMATTER = "|%10s|%7s|%11s|%10s|%11s|%7s|%15s|%14s|%12s|%15s|%8s|%12s|%8s|";
+    private final String OUTPUT_FORMATTER = "|%20s|%7s|%11s|%10s|%11s|%7s|%15s|%14s|%12s|%15s|%8s|%12s|%8s|";
 
     private List<EventResult> athleteResults;
     private String name;
@@ -33,12 +33,12 @@ public class AthleteResultsImpl implements AthleteResults {
     }
 
     @Override
-    public int getEventScore(Event e) {
+    public EventResult getEventResult(Event e) {
         Optional<EventResult> res = athleteResults.stream().filter(a -> a.getEvent().equals(e)).findFirst();
         if (!res.isPresent()) {
             throw new RuntimeException("Result for " + e.toString() + " not found");
         }
-        return res.get().getEventScore();
+        return res.get();
     }
 
     @Override
@@ -53,13 +53,11 @@ public class AthleteResultsImpl implements AthleteResults {
 
     @Override
     public String getPlace() {
-        return this.place;
+        return place;
     }
 
     @Override
-    public String getName() {
-        return this.name;
-    }
+    public String getName() { return name; }
 
     @Override
     public void print() {
@@ -88,16 +86,16 @@ public class AthleteResultsImpl implements AthleteResults {
                 .append(System.lineSeparator())
                 .append(String.format(OUTPUT_FORMATTER
                         , this.getName()
-                        , this.getEventScore(Event.Distance100)
-                        , this.getEventScore(Event.LongJump)
-                        , this.getEventScore(Event.ShotPut)
-                        , this.getEventScore(Event.HighJump)
-                        , this.getEventScore(Event.Distance400)
-                        , this.getEventScore(Event.Hurdles110)
-                        , this.getEventScore(Event.DiscusThrow)
-                        , this.getEventScore(Event.PoleVault)
-                        , this.getEventScore(Event.JavelinThrow)
-                        , this.getEventScore(Event.Distance1500)
+                        , this.getEventResult(Event.Distance100).getViewResult()
+                        , this.getEventResult(Event.LongJump).getViewResult()
+                        , this.getEventResult(Event.ShotPut).getViewResult()
+                        , this.getEventResult(Event.HighJump).getViewResult()
+                        , this.getEventResult(Event.Distance400).getViewResult()
+                        , this.getEventResult(Event.Hurdles110).getViewResult()
+                        , this.getEventResult(Event.DiscusThrow).getViewResult()
+                        , this.getEventResult(Event.PoleVault).getViewResult()
+                        , this.getEventResult(Event.JavelinThrow).getViewResult()
+                        , this.getEventResult(Event.Distance1500).getViewResult()
                         , this.getTotalScore()
                         , this.getPlace()
                 ))

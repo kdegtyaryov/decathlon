@@ -18,7 +18,7 @@ public class EventResultImpl implements EventResult {
 
     @Override
     public int getEventScore() {
-        return this.eventScore;
+        return eventScore;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class EventResultImpl implements EventResult {
 
     @Override
     public Event getEvent() {
-        return this.event;
+        return event;
     }
 
     @Override
