@@ -1,4 +1,4 @@
-package org.example.decathlon;
+package org.example.decathlon.model.utils;
 
 import org.example.decathlon.model.AthleteResults;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Konstanin Degtyaryov on 17.02.2021.
  */
-public class ResultProcessor {
+public class DecathlonResultProcessor {
     public List<AthleteResults> sortResults(List<AthleteResults> results) {
         List<AthleteResults> sortedResults = new ArrayList(results);
 

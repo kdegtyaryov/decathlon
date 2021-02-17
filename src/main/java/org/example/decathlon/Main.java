@@ -2,6 +2,8 @@ package org.example.decathlon;
 
 import org.example.decathlon.model.AthleteResults;
 import org.example.decathlon.model.input.AthleteResultSetReaderImpl;
+import org.example.decathlon.model.utils.DecathlonResultProcessor;
+
 import java.util.List;
 
 /**
@@ -10,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<AthleteResults> results = new AthleteResultSetReaderImpl().readFromFile("src/main/resources/input.csv");
-        System.out.println(new ResultProcessor().sortResults(results));
+        System.out.println(new DecathlonResultProcessor().sortResults(results));
     }
 }
 

@@ -1,6 +1,6 @@
 package sort;
 
-import org.example.decathlon.ResultProcessor;
+import org.example.decathlon.model.utils.DecathlonResultProcessor;
 import org.example.decathlon.model.AthleteResults;
 import org.example.decathlon.model.input.AthleteResultSetReaderImpl;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class IntegrationTest {
         List<AthleteResults> results = new AthleteResultSetReaderImpl().readFromFile(pathToEthalonFile);
         System.out.println(results);
 
-        results = new ResultProcessor().sortResults(results);
+        results = new DecathlonResultProcessor().sortResults(results);
         assertEquals(Integer.compare(results.get(0).getTotalScore(), results.get(1).getTotalScore()), 0);
         assertEquals(results.get(0).getPlace(), results.get(1).getPlace());
         assertEquals(results.get(0).getPlace(), "1-2");
