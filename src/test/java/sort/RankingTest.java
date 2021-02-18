@@ -13,11 +13,11 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Konstanin Degtyaryov on 16.02.2021.
  */
-public class IntegrationTest {
+public class RankingTest {
 
     private String pathToEthalonFile;
 
-    public IntegrationTest() {
+    public RankingTest() {
         pathToEthalonFile = "src/test/resources/input_ethalon.csv";
     }
 
