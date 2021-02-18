@@ -3,34 +3,20 @@ package org.example.decathlon.model.input;
 import org.example.decathlon.model.AthleteResults;
 import org.example.decathlon.model.AthleteResultsImpl;
 import org.example.decathlon.model.utils.Convertor;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Implements the reader for loading event results from a file.
+ * Created by Konstanin Degtyaryov on 18.02.2021.
  */
-public class AthleteResultSetReaderImpl implements AthleteResultSetReader {
+public class AthleteResultsAbstractReaderImpl {
+    protected Scanner scanner;
     /*
-    Read data from file.
-     */
-    @Override
-    public List<AthleteResults> readFromFile(String filename) {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new FileReader(filename));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("Incorrect file name.");
-        }
-        return read(scanner);
-    }
-
-    /*
-    Reads data from scanner.
-     */
-    private List<AthleteResults> read(Scanner scanner) {
+Reads data from scanner.
+*/
+    public List<AthleteResults> parse() {
         List<AthleteResults> athleteResultsList = new ArrayList<>();
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

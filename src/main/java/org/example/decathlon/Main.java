@@ -1,10 +1,8 @@
 package org.example.decathlon;
 
-import org.example.decathlon.model.AthleteResults;
-import org.example.decathlon.model.input.AthleteResultSetReaderImpl;
+import org.example.decathlon.model.input.AthleteResultsFileReaderImpl;
+import org.example.decathlon.model.input.AthleteResultsReader;
 import org.example.decathlon.model.utils.DecathlonResultProcessor;
-
-import java.util.List;
 
 /**
  * Created by Konstanin Degtyaryov on 17.02.2021.
@@ -12,8 +10,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Run this class to process the file input.csv in resources folder.
-        List<AthleteResults> results = new AthleteResultSetReaderImpl().readFromFile("src/main/resources/input.csv");
-        System.out.println(new DecathlonResultProcessor().sortResults(results));
+        String fileName = "src/main/resources/input.csv";
+        AthleteResultsReader reader = new AthleteResultsFileReaderImpl(fileName);
+        System.out.println(DecathlonResultProcessor.processResults(reader));
     }
 }
 
