@@ -3,7 +3,7 @@ package sort;
 import org.example.decathlon.model.input.AthleteResultsReader;
 import org.example.decathlon.model.utils.DecathlonResultProcessor;
 import org.example.decathlon.model.AthleteResults;
-import org.example.decathlon.model.input.AthleteResultsFileReaderImpl;
+import org.example.decathlon.model.input.AthleteResultsFileScannerReader;
 import org.junit.Test;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class IntegrationTest {
 
     @Test
     public void checkSort() {
-        AthleteResultsReader reader = new AthleteResultsFileReaderImpl(pathToEthalonFile);
+        AthleteResultsReader reader = new AthleteResultsFileScannerReader(pathToEthalonFile);
         // Print results before rankins
         System.out.println(reader.read());
 

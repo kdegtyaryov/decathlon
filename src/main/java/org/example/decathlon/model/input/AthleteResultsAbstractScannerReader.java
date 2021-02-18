@@ -9,13 +9,11 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by Konstanin Degtyaryov on 18.02.2021.
+ Reads data from scanner.
  */
-public class AthleteResultsAbstractReaderImpl {
+public abstract class AthleteResultsAbstractScannerReader {
     protected Scanner scanner;
-    /*
-Reads data from scanner.
-*/
+
     public List<AthleteResults> parse() {
         List<AthleteResults> athleteResultsList = new ArrayList<>();
         while (scanner.hasNextLine()) {

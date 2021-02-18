@@ -1,6 +1,6 @@
 package org.example.decathlon;
 
-import org.example.decathlon.model.input.AthleteResultsFileReaderImpl;
+import org.example.decathlon.model.input.AthleteResultsFileScannerReader;
 import org.example.decathlon.model.input.AthleteResultsReader;
 import org.example.decathlon.model.utils.DecathlonResultProcessor;
 
@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         // Run this class to process the file input.csv in resources folder.
         String fileName = "src/main/resources/input.csv";
-        AthleteResultsReader reader = new AthleteResultsFileReaderImpl(fileName);
+        AthleteResultsReader reader = new AthleteResultsFileScannerReader(fileName);
         System.out.println(DecathlonResultProcessor.processResults(reader));
     }
 }
