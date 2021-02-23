@@ -14,7 +14,7 @@ import java.util.Scanner;
 public abstract class AthleteResultsAbstractScannerReader {
     protected Scanner scanner;
 
-    public List<AthleteResults> parse() {
+    protected List<AthleteResults> parse() {
         List<AthleteResults> athleteResultsList = new ArrayList<>();
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
